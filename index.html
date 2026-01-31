@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Website Development Proposal | Catalyst Growth Co.</title>
+  <title>Website Development Proposal | Catalyst Growth Collective</title>
   <meta name="description" content="Website development proposal for a sister-site build, enhanced and optimized for SEO, AEO, and AI search visibility." />
 
   <!-- Fonts -->
@@ -13,9 +13,9 @@
 
   <style>
     :root{
-      --ink:#0b0b0b;
+      --ink:#0b0b0b;                 /* nav black */
       --text:#121212;
-      --muted:rgba(18,18,18,.7);
+      --muted:rgba(18,18,18,.70);
       --gold:#f0c030;
       --gold-soft:#f7d76a;
       --stroke:rgba(18,18,18,.12);
@@ -28,49 +28,70 @@
     }
 
     *{box-sizing:border-box}
+    html,body{height:100%}
     body{
       margin:0;
       font-family:Ubuntu,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
       color:var(--text);
+      line-height:1.45;
       background:
         radial-gradient(1100px 700px at 20% 15%, rgba(240,216,144,.75), transparent 55%),
         radial-gradient(1100px 700px at 75% 20%, rgba(240,240,192,.65), transparent 55%),
+        radial-gradient(1200px 800px at 50% 90%, rgba(240,192,48,.18), transparent 60%),
         linear-gradient(180deg, rgba(240,216,144,.85), rgba(246,235,196,.92));
     }
 
-    a{color:inherit;text-decoration:none}
-    .wrap{max-width:var(--max);margin:0 auto;padding:0 var(--pad) 70px}
+    a{color:inherit; text-decoration:none}
+    .wrap{max-width:var(--max); margin:0 auto; padding:0 var(--pad) 70px;}
 
-    /* HEADER */
+    /* =========================
+       HEADER / NAV
+       ========================= */
     .topbar{
-      position:sticky;top:0;z-index:50;
-      background:rgba(11,11,11,.92);
-      border-bottom:1px solid rgba(255,255,255,.1);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: var(--ink); /* match logo background */
+      border-bottom: 1px solid rgba(255,255,255,.08);
     }
     .topbar-inner{
-      max-width:var(--max);
-      margin:0 auto;
-      padding:12px var(--pad);
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 12px var(--pad);
       display:flex;
       align-items:center;
       justify-content:space-between;
-      gap:16px;
+      gap: 16px;
     }
-    .brand{
+
+    .brand-text{
       display:flex;
-      align-items:center;
-      gap:14px;
+      align-items:baseline;
+      gap:6px;
+      letter-spacing:.4px;
+      white-space:nowrap;
+      padding: 6px 10px;
+      border-radius: 10px;
+      background: rgba(255,255,255,.02);
+      border: 1px solid rgba(255,255,255,.06);
     }
-    .brand img{
-      height:34px;
-      width:auto;
-      display:block;
+    .brand-light{
+      color: var(--gold);
+      font-weight: 500;
+      font-size: 18px;
     }
+    .brand-bold{
+      color: var(--gold);
+      font-weight: 800;
+      font-size: 18px;
+    }
+
     .nav{
       display:flex;
       gap:18px;
       flex-wrap:wrap;
       align-items:center;
+      justify-content:flex-end;
     }
     .nav a{
       color:rgba(255,255,255,.85);
@@ -83,21 +104,29 @@
     .nav .cta{
       background:linear-gradient(135deg,var(--gold),var(--gold-soft));
       color:#111;
-      font-weight:700;
+      font-weight:800;
+      border: 1px solid rgba(240,192,48,.45);
+      box-shadow: 0 14px 40px rgba(240,192,48,.16);
     }
+    .nav .cta:hover{filter: brightness(1.02);}
 
-    /* HERO */
-    .hero{padding:32px 0}
+    /* =========================
+       HERO
+       ========================= */
+    .hero{padding:32px 0 10px;}
     .hero-grid{
       display:grid;
       grid-template-columns:1.2fr .8fr;
       gap:22px;
+      align-items:start;
     }
 
     .client-logo img{
       max-width:190px;
       height:auto;
-      margin-bottom:16px;
+      margin-bottom:14px;
+      display:block;
+      filter: drop-shadow(0 8px 18px rgba(0,0,0,.10));
     }
 
     .kicker{
@@ -105,25 +134,36 @@
       letter-spacing:1px;
       text-transform:uppercase;
       color:var(--muted);
-      margin-bottom:10px;
+      margin:0 0 10px;
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+    .kicker .dot{
+      width:8px;height:8px;border-radius:999px;
+      background: var(--gold);
+      box-shadow: 0 0 0 5px rgba(240,192,48,.22);
     }
 
     h1{
       font-size:clamp(34px,4vw,56px);
       line-height:1.05;
-      margin:0 0 6px;
+      margin:0 0 8px;
+      letter-spacing:-1px;
     }
 
-    .proposal-for{
-      font-size:13px;
-      color:var(--muted);
-      margin-bottom:12px;
+    .proposal-headline{
+      font-size: clamp(22px, 2.5vw, 30px);
+      font-weight: 700;
+      margin: 10px 0 14px;
+      color: rgba(18,18,18,.85);
     }
 
     .hero-sub{
       font-size:15px;
       color:var(--muted);
       max-width:60ch;
+      margin: 0 0 18px;
     }
 
     .btn-row{
@@ -139,13 +179,19 @@
       padding:12px 16px;
       border-radius:999px;
       font-size:13px;
-      font-weight:700;
+      font-weight:800;
       cursor:pointer;
+      transition: transform .12s ease, background .12s ease, border-color .12s ease;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
     }
-
+    .btn:hover{transform: translateY(-1px); background: rgba(18,18,18,.09); border-color: rgba(18,18,18,.18);}
     .btn.primary{
       background:linear-gradient(135deg,var(--gold),var(--gold-soft));
-      border-color:var(--gold);
+      border-color: rgba(240,192,48,.55);
+      color:#111;
+      box-shadow: 0 18px 55px rgba(240,192,48,.14);
     }
 
     .chips{display:flex;gap:10px;flex-wrap:wrap}
@@ -155,22 +201,63 @@
       background:rgba(255,255,255,.6);
       border-radius:14px;
       border:1px solid var(--stroke);
+      box-shadow: var(--shadow-soft);
     }
+    .chip strong{color:#111}
 
     .hero-card{
-      background:#fff;
+      background: rgba(255,255,255,.92);
+      border: 1px solid rgba(18,18,18,.10);
       border-radius:20px;
       padding:22px;
       box-shadow:var(--shadow);
     }
+    .hero-card h3{
+      margin: 0 0 10px;
+      font-size: 18px;
+      letter-spacing: -.2px;
+    }
+    .hero-card p{
+      margin: 0 0 12px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .hero-card ul{
+      margin: 0 0 14px;
+      padding-left: 18px;
+      color: rgba(18,18,18,.78);
+      font-size: 13px;
+    }
+    .hero-card li{margin: 8px 0}
+    .hero-card .cta-wide{width:100%}
+    .fine{
+      margin-top: 8px;
+      font-size: 12px;
+      color: rgba(18,18,18,.55);
+      text-align:center;
+    }
 
-    /* SECTIONS */
+    /* =========================
+       SECTIONS
+       ========================= */
     .section{
       margin-top:26px;
       background:rgba(255,255,255,.65);
       padding:22px;
       border-radius:var(--radius);
       box-shadow:var(--shadow-soft);
+      border: 1px solid rgba(18,18,18,.08);
+    }
+
+    .section h3{
+      margin: 0 0 10px;
+      font-size: 18px;
+      letter-spacing: -.2px;
+    }
+    .section p{
+      margin: 0 0 10px;
+      color: var(--muted);
+      font-size: 13.5px;
     }
 
     .grid{
@@ -186,6 +273,9 @@
       padding:16px;
       border:1px solid var(--stroke);
     }
+    .box strong{display:block; margin-bottom:8px;}
+    .box ul{margin:0; padding-left:18px; color: rgba(18,18,18,.75); font-size: 13px;}
+    .box li{margin:6px 0}
 
     footer{
       margin-top:22px;
@@ -195,15 +285,23 @@
       justify-content:space-between;
       flex-wrap:wrap;
       gap:10px;
+      padding-top: 10px;
     }
+    footer a{border-bottom:1px dashed rgba(18,18,18,.35);}
+    footer a:hover{border-bottom-color: rgba(18,18,18,.6);}
 
     @media(max-width:900px){
       .hero-grid,.grid{grid-template-columns:1fr}
+      .nav{justify-content:flex-start}
+      .brand-light,.brand-bold{font-size:16px}
+      .client-logo img{max-width:170px}
     }
 
     @media print{
-      .topbar,.btn-row{display:none}
+      .topbar,.btn-row{display:none !important}
       body{background:#fff}
+      .section,.hero-card{box-shadow:none}
+      .client-logo img{filter:none}
     }
   </style>
 </head>
@@ -212,11 +310,12 @@
 
 <header class="topbar">
   <div class="topbar-inner">
-    <div class="brand">
-      <img src="https://catalystgrow.co/wp-content/uploads/2026/01/CGC-Long-Logo-scaled.webp"
-           alt="Catalyst Growth Collective logo">
+    <div class="brand-text" aria-label="Catalyst Growth Collective">
+      <span class="brand-light">Catalyst</span>
+      <span class="brand-bold">GROWTH COLLECTIVE</span>
     </div>
-    <nav class="nav">
+
+    <nav class="nav" aria-label="Primary navigation">
       <a href="#overview">Overview</a>
       <a href="#scope">Scope</a>
       <a href="#portfolio">Portfolio</a>
@@ -228,46 +327,56 @@
 
 <main class="wrap">
 
-  <section class="hero">
+  <section class="hero" id="top">
     <div class="hero-grid">
       <div>
+        <!-- Client Logo -->
         <div class="client-logo">
-          <img src="https://temp.jaycee-herb.com/wp-content/uploads/2016/11/static1.squarespace.com_.jpg"
-               alt="Jaycee Herb logo">
+          <img
+            src="https://temp.jaycee-herb.com/wp-content/uploads/2016/11/static1.squarespace.com_.jpg"
+            alt="Jaycee Herb logo"
+            loading="eager"
+          />
         </div>
 
-        <div class="kicker">CALM. STRATEGIC. GROUNDED.</div>
+        <p class="kicker"><span class="dot"></span> CALM. STRATEGIC. GROUNDED.</p>
+
         <h1>Website Development Proposal</h1>
-        <div class="proposal-for">Proposal prepared for <strong>Jaycee Herb</strong></div>
+
+        <h2 class="proposal-headline">Proposal prepared for <strong>Jaycee Herb</strong></h2>
 
         <p class="hero-sub">
-          <strong>Sister site build, enhanced and optimized.</strong> We keep brand consistency,
-          then improve structure, clarity, and long-term visibility across SEO, AEO,
-          and AI-driven search experiences.
+          <strong>Sister site build, enhanced and optimized.</strong> We keep brand consistency of the existing site,
+          then improve structure, clarity, and long-term visibility across SEO, AEO, and AI-driven search experiences.
         </p>
 
         <div class="btn-row">
           <a class="btn primary" href="#next">Accept and Kickoff</a>
           <a class="btn" href="#portfolio">View Portfolio</a>
-          <button class="btn" onclick="window.print()">Print / Save as PDF</button>
+          <button class="btn" type="button" onclick="window.print()">Print / Save as PDF</button>
         </div>
 
-        <div class="chips">
-          <span class="chip">BUILT FOR AI Search</span>
-          <span class="chip">FOCUSED ON Authority</span>
-          <span class="chip">DESIGNED FOR Clarity</span>
-          <span class="chip">MEASURED BY Leads</span>
+        <div class="chips" aria-label="Highlights">
+          <span class="chip">BUILT FOR <strong>AI Search</strong></span>
+          <span class="chip">FOCUSED ON <strong>Authority</strong></span>
+          <span class="chip">DESIGNED FOR <strong>Clarity</strong></span>
+          <span class="chip">MEASURED BY <strong>Leads</strong></span>
         </div>
       </div>
 
       <aside class="hero-card">
         <h3>Your visibility should not reset every month.</h3>
+        <p>
+          This proposal includes a site build plus foundational content so your website can earn trust and discoverability
+          in modern search.
+        </p>
         <ul>
-          <li>AEO-first structure for AI answers</li>
-          <li>EEAT signals that build trust</li>
-          <li>Conversion paths that drive meetings</li>
+          <li><strong>AEO-first structure</strong> so AI can lift your answers.</li>
+          <li><strong>EEAT signals</strong> that support credibility and trust.</li>
+          <li><strong>Conversion paths</strong> that turn visits into meetings.</li>
         </ul>
-        <a class="btn primary" href="#next">Book a Meeting</a>
+        <a class="btn primary cta-wide" href="#next">Book a Meeting</a>
+        <div class="fine">No pressure. Clear next steps.</div>
       </aside>
     </div>
   </section>
@@ -275,8 +384,13 @@
   <section class="section" id="overview">
     <h3>Project Overview</h3>
     <p>
-      This project creates a sister website aligned with your existing brand while
-      improving clarity, structure, and long-term growth potential.
+      This project creates a sister website aligned with your existing brand and current site while elevating the experience.
+      The goal is not to copy the original page-for-page. The goal is to refine what works, improve clarity, and build a
+      stronger foundation for long-term growth.
+    </p>
+    <p>
+      The result is a site that feels familiar to your audience, but performs better behind the scenes with cleaner structure,
+      stronger calls-to-action, and content built for discoverability.
     </p>
   </section>
 
@@ -284,33 +398,43 @@
     <h3>Scope of Work</h3>
     <div class="grid">
       <div class="box">
-        <strong>Website Design & Development</strong>
+        <strong>Website Design and Development</strong>
         <ul>
-          <li>Up to 5 core pages</li>
-          <li>Mobile-responsive design</li>
-          <li>Improved hierarchy and CTAs</li>
+          <li>Custom design aligned with the sister site branding</li>
+          <li>Up to 5 core pages (Home, About, Services/Products, Blog, Contact)</li>
+          <li>Mobile-responsive layout (desktop, tablet, mobile)</li>
+          <li>Improved hierarchy, spacing, and calls-to-action</li>
+          <li>Contact form setup and testing</li>
         </ul>
       </div>
+
       <div class="box">
-        <strong>SEO, AEO & AI Optimization</strong>
+        <strong>SEO, AEO and AI Optimization</strong>
         <ul>
-          <li>Metadata & structure</li>
-          <li>Image optimization</li>
-          <li>Index-ready build</li>
+          <li>Page titles, meta descriptions, and header structure</li>
+          <li>SEO-friendly URL structure and internal linking foundation</li>
+          <li>Image optimization and alt text</li>
+          <li>Built indexing-ready from launch</li>
         </ul>
       </div>
+
       <div class="box">
         <strong>Blog Content Included</strong>
         <ul>
-          <li>5 SEO-optimized posts</li>
-          <li>Written for AI discovery</li>
+          <li>5 SEO-optimized blog posts</li>
+          <li>Written for organic search and AI discovery</li>
+          <li>Formatted and published on the site</li>
         </ul>
       </div>
+
       <div class="box">
-        <strong>Technical Setup & Launch</strong>
+        <strong>Technical Setup and Launch</strong>
         <ul>
-          <li>Performance & security basics</li>
-          <li>Final QA & launch</li>
+          <li>Platform setup and configuration (as agreed)</li>
+          <li>Performance and basic security configuration</li>
+          <li>Cross-browser and mobile testing</li>
+          <li>Final launch support</li>
+          <li>One structured revision round per page</li>
         </ul>
       </div>
     </div>
@@ -318,39 +442,62 @@
 
   <section class="section" id="portfolio">
     <h3>Portfolio</h3>
+    <p>Examples of recent work and live builds:</p>
     <div class="btn-row">
-      <a class="btn primary" href="https://catalystgrow.co/" target="_blank">Catalyst Growth Co.</a>
-      <a class="btn" href="https://www.monocerosmarketing.co/" target="_blank">Monoceros Marketing</a>
-      <a class="btn" href="https://tech4uatl.com/" target="_blank">Tech4UATL</a>
-      <a class="btn" href="https://pentagonsvcs.us/" target="_blank">Pentagon Services</a>
+      <a class="btn primary" href="https://catalystgrow.co/" target="_blank" rel="noopener">Catalyst Growth Co.</a>
+      <a class="btn" href="https://www.monocerosmarketing.co/" target="_blank" rel="noopener">Monoceros Marketing</a>
+      <a class="btn" href="https://tech4uatl.com/" target="_blank" rel="noopener">Tech4UATL</a>
+      <a class="btn" href="https://pentagonsvcs.us/" target="_blank" rel="noopener">Pentagon Services</a>
     </div>
   </section>
 
   <section class="section" id="investment">
-    <h3>Timeline & Investment</h3>
+    <h3>Timeline and Investment</h3>
     <div class="grid">
       <div class="box">
         <strong>Timeline</strong>
-        <p>Estimated turnaround: 1 month</p>
+        <ul>
+          <li><strong>Estimated turnaround:</strong> 1 month</li>
+          <li>Assumes timely feedback and approvals</li>
+        </ul>
       </div>
       <div class="box">
         <strong>Investment</strong>
-        <p>$2,500 total<br>$1,000 down payment to begin</p>
+        <ul>
+          <li><strong>Total project cost:</strong> $2,500</li>
+          <li><strong>$1,000 down payment</strong> required to begin</li>
+          <li>Remaining balance due upon completion, prior to launch</li>
+          <li><strong>Optional:</strong> WooCommerce setup available for additional cost</li>
+        </ul>
       </div>
     </div>
   </section>
 
   <section class="section" id="next">
     <h3>Next Steps</h3>
-    <ul>
-      <li>Confirm scope</li>
-      <li>Down payment invoice issued</li>
-      <li>Build, review, launch</li>
-    </ul>
+    <div class="grid">
+      <div class="box">
+        <strong>What happens next</strong>
+        <ul>
+          <li>Confirm scope and timeline</li>
+          <li>Invoice for the $1,000 down payment is provided</li>
+          <li>Build, review, finalize, and launch</li>
+        </ul>
+      </div>
+
+      <div class="box">
+        <strong>Notes</strong>
+        <ul>
+          <li>Project timeline begins once the down payment is received</li>
+          <li>Remaining balance is due upon completion, prior to launch</li>
+          <li>WooCommerce is available if online selling is needed</li>
+        </ul>
+      </div>
+    </div>
   </section>
 
   <footer>
-    <div>© <span id="year"></span> Catalyst Growth Co.</div>
+    <div>© <span id="year"></span> Catalyst Growth Collective</div>
     <div><a href="#top">Back to top</a></div>
   </footer>
 
