@@ -12,596 +12,354 @@
   <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
 
   <style>
-    /* =========================================
-       CATALYST BRAND TOKENS (MATCHES SCREENSHOT)
-       ========================================= */
     :root{
-      --ink: #0b0b0b;                 /* header black */
-      --text: #121212;                /* body text */
-      --muted: rgba(18,18,18,.70);
-
-      --cream: #f6ebc4;               /* warm light */
-      --sand:  #f0d890;               /* warm yellow tint */
-      --gold:  #f0c030;               /* primary accent */
-      --gold-2:#f7d76a;               /* soft gold */
-
-      --card: rgba(255,255,255,.70);
-      --card-2: rgba(255,255,255,.82);
-      --stroke: rgba(18,18,18,.12);
-
-      --radius: 18px;
-      --radius-sm: 14px;
-
-      --max: 1120px;
-      --pad: 22px;
-
-      --shadow: 0 20px 55px rgba(0,0,0,.12);
-      --shadow-soft: 0 10px 35px rgba(0,0,0,.08);
+      --ink:#0b0b0b;
+      --text:#121212;
+      --muted:rgba(18,18,18,.7);
+      --gold:#f0c030;
+      --gold-soft:#f7d76a;
+      --stroke:rgba(18,18,18,.12);
+      --radius:18px;
+      --radius-sm:14px;
+      --max:1120px;
+      --pad:22px;
+      --shadow:0 20px 55px rgba(0,0,0,.12);
+      --shadow-soft:0 10px 35px rgba(0,0,0,.08);
     }
 
     *{box-sizing:border-box}
-    html,body{height:100%}
     body{
       margin:0;
-      font-family: Ubuntu, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      color: var(--text);
-      line-height: 1.45;
+      font-family:Ubuntu,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      color:var(--text);
       background:
         radial-gradient(1100px 700px at 20% 15%, rgba(240,216,144,.75), transparent 55%),
         radial-gradient(1100px 700px at 75% 20%, rgba(240,240,192,.65), transparent 55%),
-        radial-gradient(1200px 800px at 50% 90%, rgba(240,192,48,.18), transparent 60%),
         linear-gradient(180deg, rgba(240,216,144,.85), rgba(246,235,196,.92));
     }
 
-    a{color:inherit}
-    .wrap{
-      width:100%;
-      max-width: var(--max);
-      margin:0 auto;
-      padding: 0 var(--pad) 70px;
-    }
+    a{color:inherit;text-decoration:none}
+    .wrap{max-width:var(--max);margin:0 auto;padding:0 var(--pad) 70px}
 
-    /* =========================
-       HEADER / NAV
-       ========================= */
+    /* HEADER */
     .topbar{
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      background: rgba(11,11,11,.92);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(255,255,255,.10);
+      position:sticky;top:0;z-index:50;
+      background:rgba(11,11,11,.92);
+      border-bottom:1px solid rgba(255,255,255,.1);
     }
     .topbar-inner{
-      max-width: var(--max);
-      margin: 0 auto;
-      padding: 12px var(--pad);
+      max-width:var(--max);
+      margin:0 auto;
+      padding:12px var(--pad);
       display:flex;
       align-items:center;
       justify-content:space-between;
-      gap: 16px;
+      gap:16px;
     }
-
     .brand{
       display:flex;
       align-items:center;
-      gap:12px;
-      min-width: 240px;
+      gap:14px;
     }
-
-    /* If you want to use an actual Catalyst logo image later:
-       <img class="brand-logo-img" src="catalyst-logo.png" alt="Catalyst Growth Co." />
-    */
-    .brand-logo{
-      width: 38px;
-      height: 38px;
-      border-radius: 12px;
-      background: linear-gradient(135deg, rgba(240,192,48,1), rgba(240,192,48,.35));
-      border: 1px solid rgba(240,192,48,.55);
-      box-shadow: 0 10px 30px rgba(240,192,48,.20);
-      flex: 0 0 auto;
+    .brand img{
+      height:34px;
+      width:auto;
+      display:block;
     }
-
-    .brand-lockup{
-      display:flex;
-      flex-direction:column;
-      line-height: 1.05;
-    }
-    .brand-lockup .small{
-      font-size: 12px;
-      color: rgba(255,255,255,.70);
-      letter-spacing: .2px;
-    }
-    .brand-lockup .big{
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: .5px;
-      color: rgba(240,192,48,.98);
-      text-transform: uppercase;
-    }
-
     .nav{
       display:flex;
+      gap:18px;
+      flex-wrap:wrap;
       align-items:center;
-      gap: 18px;
-      flex-wrap: wrap;
-      justify-content:flex-end;
     }
     .nav a{
-      text-decoration:none;
-      color: rgba(255,255,255,.80);
-      font-size: 13px;
-      font-weight: 500;
-      padding: 8px 10px;
-      border-radius: 999px;
+      color:rgba(255,255,255,.85);
+      font-size:13px;
+      font-weight:500;
+      padding:8px 10px;
+      border-radius:999px;
     }
-    .nav a:hover{
-      background: rgba(255,255,255,.08);
-      color: rgba(255,255,255,.92);
-    }
-
+    .nav a:hover{background:rgba(255,255,255,.08)}
     .nav .cta{
-      background: linear-gradient(135deg, rgba(240,192,48,1), rgba(247,215,106,.95));
-      color: rgba(11,11,11,.92);
-      border: 1px solid rgba(240,192,48,.55);
-      box-shadow: 0 14px 40px rgba(240,192,48,.18);
-      padding: 10px 14px;
-      font-weight: 700;
+      background:linear-gradient(135deg,var(--gold),var(--gold-soft));
+      color:#111;
+      font-weight:700;
     }
-    .nav .cta:hover{background: linear-gradient(135deg, rgba(240,192,48,1), rgba(247,215,106,1))}
 
-    /* =========================
-       HERO
-       ========================= */
-    .hero{
-      padding: 28px 0 0;
-    }
+    /* HERO */
+    .hero{padding:32px 0}
     .hero-grid{
       display:grid;
-      grid-template-columns: 1.2fr .8fr;
-      gap: 20px;
-      align-items:start;
+      grid-template-columns:1.2fr .8fr;
+      gap:22px;
     }
 
-    .hero-left{
-      padding: 22px 0;
-      position: relative;
-    }
-
-    /* Client logo (proposal recipient) */
-    .client-logo{
-      margin-bottom: 14px;
-    }
     .client-logo img{
-      max-width: 190px;
-      height: auto;
-      display: block;
-      filter: drop-shadow(0 8px 18px rgba(0,0,0,.10));
+      max-width:190px;
+      height:auto;
+      margin-bottom:16px;
     }
 
     .kicker{
-      font-size: 12px;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      color: rgba(18,18,18,.60);
-      margin: 0 0 10px;
-      display:flex;
-      align-items:center;
-      gap:10px;
-    }
-    .kicker .dot{
-      width:8px;height:8px;border-radius:999px;
-      background: var(--gold);
-      box-shadow: 0 0 0 5px rgba(240,192,48,.22);
+      font-size:12px;
+      letter-spacing:1px;
+      text-transform:uppercase;
+      color:var(--muted);
+      margin-bottom:10px;
     }
 
     h1{
-      margin: 0 0 6px;
-      font-size: clamp(34px, 4.2vw, 56px);
-      letter-spacing: -1px;
-      line-height: 1.02;
+      font-size:clamp(34px,4vw,56px);
+      line-height:1.05;
+      margin:0 0 6px;
     }
 
     .proposal-for{
-      font-size: 13px;
-      color: rgba(18,18,18,.65);
-      margin: 0 0 12px;
+      font-size:13px;
+      color:var(--muted);
+      margin-bottom:12px;
     }
 
     .hero-sub{
-      margin: 0 0 18px;
-      color: rgba(18,18,18,.70);
-      font-size: 15px;
-      max-width: 62ch;
+      font-size:15px;
+      color:var(--muted);
+      max-width:60ch;
     }
 
     .btn-row{
       display:flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-top: 14px;
+      gap:12px;
+      flex-wrap:wrap;
+      margin:18px 0;
     }
+
     .btn{
-      appearance:none;
-      border: 1px solid var(--stroke);
-      background: rgba(18,18,18,.06);
-      color: rgba(18,18,18,.90);
-      padding: 12px 16px;
-      border-radius: 999px;
-      text-decoration:none;
-      font-weight: 700;
-      font-size: 13px;
-      letter-spacing: .2px;
-      transition: transform .12s ease, background .12s ease, border-color .12s ease;
-      display:inline-flex;
-      align-items:center;
-      gap: 10px;
-      cursor: pointer;
+      border:1px solid var(--stroke);
+      background:rgba(18,18,18,.06);
+      padding:12px 16px;
+      border-radius:999px;
+      font-size:13px;
+      font-weight:700;
+      cursor:pointer;
     }
-    .btn:hover{transform: translateY(-1px); background: rgba(18,18,18,.09); border-color: rgba(18,18,18,.18)}
+
     .btn.primary{
-      background: linear-gradient(135deg, rgba(240,192,48,1), rgba(247,215,106,.95));
-      border-color: rgba(240,192,48,.55);
-      color: rgba(11,11,11,.92);
-      box-shadow: 0 18px 55px rgba(240,192,48,.14);
+      background:linear-gradient(135deg,var(--gold),var(--gold-soft));
+      border-color:var(--gold);
     }
-    .btn.primary:hover{background: linear-gradient(135deg, rgba(240,192,48,1), rgba(247,215,106,1))}
 
-    .chips{
-      display:flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-top: 18px;
-    }
+    .chips{display:flex;gap:10px;flex-wrap:wrap}
     .chip{
-      font-size: 12px;
-      padding: 9px 12px;
-      border-radius: 14px;
-      border: 1px solid rgba(18,18,18,.10);
-      background: rgba(255,255,255,.55);
-      box-shadow: var(--shadow-soft);
-      color: rgba(18,18,18,.80);
+      font-size:12px;
+      padding:8px 12px;
+      background:rgba(255,255,255,.6);
+      border-radius:14px;
+      border:1px solid var(--stroke);
     }
-    .chip strong{color: rgba(18,18,18,.92)}
 
-    /* Hero right card like screenshot */
     .hero-card{
-      background: rgba(255,255,255,.85);
-      border: 1px solid rgba(18,18,18,.12);
-      border-radius: 20px;
-      box-shadow: var(--shadow);
-      padding: 22px;
-      margin-top: 8px;
-    }
-    .hero-card h2{
-      margin: 0 0 10px;
-      font-size: 18px;
-      letter-spacing: -.2px;
-    }
-    .hero-card p{
-      margin: 0 0 14px;
-      color: rgba(18,18,18,.70);
-      font-size: 13px;
-    }
-    .hero-card ul{
-      margin: 0 0 16px;
-      padding-left: 18px;
-      color: rgba(18,18,18,.78);
-      font-size: 13px;
-    }
-    .hero-card li{margin: 8px 0}
-    .hero-card .cta-wide{
-      width:100%;
-      justify-content:center;
-    }
-    .fine{
-      margin-top: 8px;
-      font-size: 12px;
-      color: rgba(18,18,18,.60);
-      text-align:center;
+      background:#fff;
+      border-radius:20px;
+      padding:22px;
+      box-shadow:var(--shadow);
     }
 
-    /* =========================
-       SECTIONS
-       ========================= */
+    /* SECTIONS */
     .section{
-      margin-top: 22px;
-      background: rgba(255,255,255,.55);
-      border: 1px solid rgba(18,18,18,.10);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow-soft);
-      padding: 22px;
-    }
-    .section h3{
-      margin: 0 0 10px;
-      font-size: 18px;
-      letter-spacing: -.2px;
-    }
-    .section p{
-      margin: 0 0 10px;
-      color: rgba(18,18,18,.75);
-      font-size: 13.5px;
+      margin-top:26px;
+      background:rgba(255,255,255,.65);
+      padding:22px;
+      border-radius:var(--radius);
+      box-shadow:var(--shadow-soft);
     }
 
     .grid{
       display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
-      margin-top: 14px;
+      grid-template-columns:1fr 1fr;
+      gap:14px;
+      margin-top:14px;
     }
+
     .box{
-      background: rgba(255,255,255,.78);
-      border: 1px solid rgba(18,18,18,.10);
-      border-radius: var(--radius-sm);
-      padding: 16px;
-    }
-    .box h4{
-      margin: 0 0 8px;
-      font-size: 14px;
-    }
-    .box ul{
-      margin:0;
-      padding-left: 18px;
-      color: rgba(18,18,18,.72);
-      font-size: 13px;
-    }
-    .box li{margin: 6px 0}
-
-    /* Portfolio buttons */
-    .portfolio-actions{
-      display:flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-top: 10px;
-    }
-    .portfolio-actions a{
-      text-decoration:none;
+      background:#fff;
+      border-radius:var(--radius-sm);
+      padding:16px;
+      border:1px solid var(--stroke);
     }
 
-    /* Footer */
     footer{
-      margin-top: 18px;
-      padding: 14px 0 0;
-      color: rgba(18,18,18,.55);
-      font-size: 12px;
+      margin-top:22px;
+      font-size:12px;
+      color:var(--muted);
       display:flex;
-      align-items:center;
       justify-content:space-between;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-    footer a{
-      color: rgba(18,18,18,.78);
-      text-decoration:none;
-      border-bottom: 1px dashed rgba(18,18,18,.25);
-    }
-    footer a:hover{border-bottom-color: rgba(18,18,18,.45)}
-
-    /* Responsive */
-    @media (max-width: 920px){
-      .hero-grid{grid-template-columns: 1fr}
-      .grid{grid-template-columns: 1fr}
-      .nav{justify-content:flex-start}
-      .client-logo img{max-width: 160px;}
+      flex-wrap:wrap;
+      gap:10px;
     }
 
-    /* Print to PDF */
+    @media(max-width:900px){
+      .hero-grid,.grid{grid-template-columns:1fr}
+    }
+
     @media print{
-      .topbar{position: static}
-      .nav, .btn-row{display:none !important}
+      .topbar,.btn-row{display:none}
       body{background:#fff}
-      .section, .hero-card{box-shadow:none}
-      .client-logo img{filter:none}
     }
   </style>
 </head>
 
 <body>
-  <!-- HEADER -->
-  <header class="topbar">
-    <div class="topbar-inner">
-      <div class="brand">
-        <div class="brand-logo" aria-hidden="true"></div>
-        <div class="brand-lockup">
-          <span class="small">Catalyst</span>
-          <span class="big">Growth Collective</span>
-        </div>
-      </div>
 
-      <nav class="nav" aria-label="Primary">
-        <a href="#overview">Overview</a>
-        <a href="#scope">Scope</a>
-        <a href="#portfolio">Portfolio</a>
-        <a href="#investment">Investment</a>
-        <a class="cta" href="#next">Book Strategy Session</a>
-      </nav>
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">
+      <img src="https://catalystgrow.co/wp-content/uploads/2026/01/CGC-Long-Logo-scaled.webp"
+           alt="Catalyst Growth Collective logo">
     </div>
-  </header>
+    <nav class="nav">
+      <a href="#overview">Overview</a>
+      <a href="#scope">Scope</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#investment">Investment</a>
+      <a class="cta" href="#next">Book Strategy Session</a>
+    </nav>
+  </div>
+</header>
 
-  <main class="wrap">
-    <!-- HERO -->
-    <section class="hero" id="top">
-      <div class="hero-grid">
-        <div class="hero-left">
-          <!-- Client logo (proposal is for them) -->
-          <img
-  src="https://temp.jaycee-herb.com/wp-content/uploads/2016/11/static1.squarespace.com_.jpg"
-  alt="Jaycee Herb logo"
-  loading="eager"
-/>
-          <p class="kicker"><span class="dot"></span> CALM. STRATEGIC. GROUNDED.</p>
-          <h1>Website Development Proposal</h1>
-          <p class="proposal-for">Proposal prepared for <strong>Jaycee Herb</strong></p>
+<main class="wrap">
 
-          <p class="hero-sub">
-            <strong>Sister Site build, enhanced and optimized.</strong> We keep the brand consistency of the existing site,
-            then improve structure, clarity, and long-term visibility across SEO, AEO, and AI-driven search experiences.
-          </p>
-
-          <div class="btn-row">
-            <a class="btn primary" href="#next">Accept and Kickoff</a>
-            <a class="btn" href="#portfolio">View Portfolio</a>
-            <button class="btn" type="button" onclick="window.print()">Print / Save as PDF</button>
-          </div>
-
-          <div class="chips" aria-label="Highlights">
-            <span class="chip">BUILT FOR <strong>AI Search</strong></span>
-            <span class="chip">FOCUSED ON <strong>Authority</strong></span>
-            <span class="chip">DESIGNED FOR <strong>Clarity</strong></span>
-            <span class="chip">MEASURED BY <strong>Leads</strong></span>
-          </div>
-        </div>
-
-        <aside class="hero-card">
-          <h2>Your visibility should not reset every month.</h2>
-          <p>
-            This proposal includes a site build plus foundational content so your website can earn trust and discoverability
-            in modern search.
-          </p>
-          <ul>
-            <li><strong>AEO-first structure</strong> so AI can lift your answers.</li>
-            <li><strong>EEAT signals</strong> that support credibility and trust.</li>
-            <li><strong>Conversion paths</strong> that turn visits into meetings.</li>
-          </ul>
-          <a class="btn primary cta-wide" href="#next">Book a Meeting</a>
-          <div class="fine">No pressure. Clear next steps.</div>
-        </aside>
-      </div>
-    </section>
-
-    <!-- OVERVIEW -->
-    <section class="section" id="overview">
-      <h3>Project Overview</h3>
-      <p>
-        This project creates a sister website aligned with your existing brand and current site while elevating the experience.
-        The goal is not to copy the original page-for-page. The goal is to refine what works, improve clarity, and build a
-        stronger foundation for long-term growth.
-      </p>
-      <p>
-        The result is a site that feels familiar to your audience, but performs better behind the scenes with cleaner structure,
-        stronger calls-to-action, and content built for discoverability.
-      </p>
-    </section>
-
-    <!-- SCOPE -->
-    <section class="section" id="scope">
-      <h3>Scope of Work</h3>
-      <div class="grid">
-        <div class="box">
-          <h4>Website Design and Development</h4>
-          <ul>
-            <li>Custom design aligned with the sister site branding</li>
-            <li>Up to 5 core pages (Home, About, Services/Products, Blog, Contact)</li>
-            <li>Mobile-responsive layout (desktop, tablet, mobile)</li>
-            <li>Improved hierarchy, spacing, and calls-to-action</li>
-            <li>Contact form setup and testing</li>
-          </ul>
-        </div>
-
-        <div class="box">
-          <h4>SEO, AEO and AI Optimization</h4>
-          <ul>
-            <li>Page titles, meta descriptions, and header structure</li>
-            <li>SEO-friendly URL structure and internal linking foundation</li>
-            <li>Image optimization and alt text</li>
-            <li>Built indexing-ready from launch</li>
-          </ul>
-        </div>
-
-        <div class="box">
-          <h4>Blog Content Included</h4>
-          <ul>
-            <li>5 SEO-optimized blog posts</li>
-            <li>Written for organic search and AI discovery</li>
-            <li>Formatted and published on the site</li>
-          </ul>
-        </div>
-
-        <div class="box">
-          <h4>Technical Setup and Launch</h4>
-          <ul>
-            <li>Platform setup and configuration (as agreed)</li>
-            <li>Performance and basic security configuration</li>
-            <li>Cross-browser and mobile testing</li>
-            <li>Final launch support</li>
-            <li>One structured revision round per page</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- PORTFOLIO -->
-    <section class="section" id="portfolio">
-      <h3>Portfolio</h3>
-      <p>Examples of recent work and live builds:</p>
-      <div class="portfolio-actions">
-        <a class="btn primary" href="https://catalystgrow.co/" target="_blank" rel="noopener">Catalyst Growth Co.</a>
-        <a class="btn" href="https://www.monocerosmarketing.co/" target="_blank" rel="noopener">Monoceros Marketing</a>
-        <a class="btn" href="https://tech4uatl.com/" target="_blank" rel="noopener">Tech4UATL</a>
-        <a class="btn" href="https://pentagonsvcs.us/" target="_blank" rel="noopener">Pentagon Services</a>
-      </div>
-    </section>
-
-    <!-- INVESTMENT -->
-    <section class="section" id="investment">
-      <h3>Timeline and Investment</h3>
-      <div class="grid">
-        <div class="box">
-          <h4>Timeline</h4>
-          <ul>
-            <li><strong>Estimated turnaround:</strong> 1 month</li>
-            <li>Assumes timely feedback and approvals</li>
-          </ul>
-        </div>
-        <div class="box">
-          <h4>Investment</h4>
-          <ul>
-            <li><strong>Total project cost:</strong> $2,500</li>
-            <li><strong>$1,000 down payment</strong> required to begin</li>
-            <li>Remaining balance due upon completion, prior to launch</li>
-            <li><strong>Optional:</strong> WooCommerce setup available for additional cost</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- NEXT -->
-    <section class="section" id="next">
-      <h3>Next Steps</h3>
-      <div class="grid">
-        <div class="box">
-          <h4>What happens next</h4>
-          <ul>
-            <li>Confirm scope and timeline</li>
-            <li>Invoice for the $1,000 down payment is provided</li>
-            <li>Build, review, finalize, and launch</li>
-          </ul>
-        </div>
-
-        <div class="box">
-          <h4>Notes</h4>
-          <ul>
-            <li>Project timeline begins once the down payment is received</li>
-            <li>Remaining balance is due upon completion, prior to launch</li>
-            <li>WooCommerce is available if online selling is needed</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <footer>
-      <div>© <span id="year"></span> Catalyst Growth Co.</div>
+  <section class="hero">
+    <div class="hero-grid">
       <div>
-        <a href="#top">Back to top</a>
-        &nbsp;•&nbsp;
-        <span>Contact: your-email@domain.com</span>
-      </div>
-    </footer>
-  </main>
+        <div class="client-logo">
+          <img src="https://temp.jaycee-herb.com/wp-content/uploads/2016/11/static1.squarespace.com_.jpg"
+               alt="Jaycee Herb logo">
+        </div>
 
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
+        <div class="kicker">CALM. STRATEGIC. GROUNDED.</div>
+        <h1>Website Development Proposal</h1>
+        <div class="proposal-for">Proposal prepared for <strong>Jaycee Herb</strong></div>
+
+        <p class="hero-sub">
+          <strong>Sister site build, enhanced and optimized.</strong> We keep brand consistency,
+          then improve structure, clarity, and long-term visibility across SEO, AEO,
+          and AI-driven search experiences.
+        </p>
+
+        <div class="btn-row">
+          <a class="btn primary" href="#next">Accept and Kickoff</a>
+          <a class="btn" href="#portfolio">View Portfolio</a>
+          <button class="btn" onclick="window.print()">Print / Save as PDF</button>
+        </div>
+
+        <div class="chips">
+          <span class="chip">BUILT FOR AI Search</span>
+          <span class="chip">FOCUSED ON Authority</span>
+          <span class="chip">DESIGNED FOR Clarity</span>
+          <span class="chip">MEASURED BY Leads</span>
+        </div>
+      </div>
+
+      <aside class="hero-card">
+        <h3>Your visibility should not reset every month.</h3>
+        <ul>
+          <li>AEO-first structure for AI answers</li>
+          <li>EEAT signals that build trust</li>
+          <li>Conversion paths that drive meetings</li>
+        </ul>
+        <a class="btn primary" href="#next">Book a Meeting</a>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section" id="overview">
+    <h3>Project Overview</h3>
+    <p>
+      This project creates a sister website aligned with your existing brand while
+      improving clarity, structure, and long-term growth potential.
+    </p>
+  </section>
+
+  <section class="section" id="scope">
+    <h3>Scope of Work</h3>
+    <div class="grid">
+      <div class="box">
+        <strong>Website Design & Development</strong>
+        <ul>
+          <li>Up to 5 core pages</li>
+          <li>Mobile-responsive design</li>
+          <li>Improved hierarchy and CTAs</li>
+        </ul>
+      </div>
+      <div class="box">
+        <strong>SEO, AEO & AI Optimization</strong>
+        <ul>
+          <li>Metadata & structure</li>
+          <li>Image optimization</li>
+          <li>Index-ready build</li>
+        </ul>
+      </div>
+      <div class="box">
+        <strong>Blog Content Included</strong>
+        <ul>
+          <li>5 SEO-optimized posts</li>
+          <li>Written for AI discovery</li>
+        </ul>
+      </div>
+      <div class="box">
+        <strong>Technical Setup & Launch</strong>
+        <ul>
+          <li>Performance & security basics</li>
+          <li>Final QA & launch</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="portfolio">
+    <h3>Portfolio</h3>
+    <div class="btn-row">
+      <a class="btn primary" href="https://catalystgrow.co/" target="_blank">Catalyst Growth Co.</a>
+      <a class="btn" href="https://www.monocerosmarketing.co/" target="_blank">Monoceros Marketing</a>
+      <a class="btn" href="https://tech4uatl.com/" target="_blank">Tech4UATL</a>
+      <a class="btn" href="https://pentagonsvcs.us/" target="_blank">Pentagon Services</a>
+    </div>
+  </section>
+
+  <section class="section" id="investment">
+    <h3>Timeline & Investment</h3>
+    <div class="grid">
+      <div class="box">
+        <strong>Timeline</strong>
+        <p>Estimated turnaround: 1 month</p>
+      </div>
+      <div class="box">
+        <strong>Investment</strong>
+        <p>$2,500 total<br>$1,000 down payment to begin</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="next">
+    <h3>Next Steps</h3>
+    <ul>
+      <li>Confirm scope</li>
+      <li>Down payment invoice issued</li>
+      <li>Build, review, launch</li>
+    </ul>
+  </section>
+
+  <footer>
+    <div>© <span id="year"></span> Catalyst Growth Co.</div>
+    <div><a href="#top">Back to top</a></div>
+  </footer>
+
+</main>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
 </body>
 </html>
 
